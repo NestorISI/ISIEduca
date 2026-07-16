@@ -297,6 +297,21 @@
     white-space:pre-wrap;
   }
 
+  .note-box{
+    margin-top:16px;
+    font-size:13.5px;
+    line-height:1.6;
+    color:var(--ink-soft);
+    background:rgba(201,147,46,0.07);
+    border:1px solid rgba(201,147,46,0.3);
+    border-left:4px solid var(--gold);
+    border-radius:10px;
+    padding:14px 18px;
+  }
+  .note-box strong{
+    color:var(--ink);
+  }
+
   .prompt-footer{
     display:flex;
     align-items:center;
@@ -378,7 +393,7 @@
       <span class="brand-mark">IE</span>
       <span>
         <span class="brand-name">ISI Educa</span><br>
-        <span class="brand-sub">Excel &amp; Power BI</span>
+        <span class="brand-sub">Excel &amp; Power Pivot</span>
       </span>
     </a>
     <span class="header-tag">IA aplicada · Power Pivot</span>
@@ -440,6 +455,10 @@ Importante: la columna Fecha debe cargarse como un valor de fecha real de Excel 
     <div class="prompt-body">
       <p class="prompt-text">Toma estas 4 tablas de Excel y agrégalas al Modelo de Datos de Power Pivot. Antes de crear relaciones, revisa que los tipos de datos de los campos clave (ID_Producto, ID_Cliente, Fecha) coincidan entre tablas, y avísame si detectas alguna inconsistencia.</p>
 
+      <div class="note-box">
+        <strong>Aclaración:</strong> la IA no puede agregar tablas al Modelo de Datos de Power Pivot directamente — esa acción no está disponible desde su interfaz. Lo que sí hace es validar los tipos de datos de las claves y sugerir las relaciones. El paso de agregar las tablas al modelo se hace manualmente en Excel: seleccioná cada tabla y usá <em>Power Pivot → Agregar al Modelo de datos</em>.
+      </div>
+
       <div class="prompt-footer">
         <span class="hint">Copiá el prompt y pegalo en tu asistente de IA dentro de Excel.</span>
         <button class="copy-btn" onclick="copyPrompt(this)">Copiar prompt</button>
@@ -455,7 +474,7 @@ Importante: la columna Fecha debe cargarse como un valor de fecha real de Excel 
 
 <footer>
   <div class="footer-inner">
-    <span>© 2026 ISI Educa — Cursos de Excel, Ofimática y Power BI</span>
+    <span>© 2026 ISI Educa — Cursos de Excel y Ofimática</span>
     <span>Serie: IA aplicada a Power Pivot</span>
   </div>
 </footer>
