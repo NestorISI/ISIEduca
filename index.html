@@ -440,6 +440,29 @@
     flex-shrink:0;
   }
 
+  .wrap-up{
+    margin-top:38px;
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-left:4px solid var(--forest);
+    border-radius:var(--radius);
+    padding:24px 26px;
+  }
+  .wrap-up-title{
+    font-family:'Fraunces', serif;
+    font-size:17px;
+    font-weight:600;
+    color:var(--ink);
+    margin:0 0 10px;
+  }
+  .wrap-up-text{
+    margin:0;
+    font-size:14.5px;
+    line-height:1.7;
+    color:var(--muted);
+    max-width:75ch;
+  }
+
   footer{
     border-top:1px solid var(--line);
     padding:32px 28px;
@@ -497,7 +520,6 @@
     <button type="button" class="tab done" data-target="etapa-02">02 · Modelo de datos</button>
     <button type="button" class="tab done" data-target="etapa-03">03 · Relaciones</button>
     <button type="button" class="tab active" data-target="etapa-04">04 · Tablas dinámicas</button>
-    <span class="tab locked" title="Próximamente">05 · Segmentaciones</span>
   </div>
 </nav>
 
@@ -640,9 +662,11 @@ Importante: usa exclusivamente los campos de las tablas relacionadas del modelo 
     </div>
   </article>
 
-  <div class="next-up">
-    <span class="dot"></span>
-    <span>Próximo paso: agregar segmentaciones de datos (slicers) conectadas a la tabla dinámica. Se publica pronto en esta misma página.</span>
+  <div class="wrap-up">
+    <p class="wrap-up-title">Conclusión de la serie</p>
+    <p class="wrap-up-text">
+      Estos cuatro pasos muestran hasta dónde llega hoy la IA integrada en Excel (Copilot y Claude): puede generar datos de ejemplo, validar tipos de datos, sugerir relaciones y armar tablas dinámicas cuando se le indica con precisión qué tablas usar. Pero no puede operar directamente Power Pivot — agregar tablas al Modelo de Datos o crear relaciones son acciones que, por ahora, siguen requiriendo hacerlas "a mano" en la interfaz de Excel, con la IA como guía paso a paso en lugar de ejecutora.
+    </p>
   </div>
 </main>
 
