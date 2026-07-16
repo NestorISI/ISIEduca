@@ -299,6 +299,7 @@
 
   .note-box{
     margin-top:16px;
+    margin-bottom:20px;
     font-size:13.5px;
     line-height:1.6;
     color:var(--ink-soft);
@@ -307,6 +308,9 @@
     border-left:4px solid var(--gold);
     border-radius:10px;
     padding:14px 18px;
+  }
+  .note-box:last-child{
+    margin-bottom:0;
   }
   .note-box strong{
     color:var(--ink);
@@ -413,8 +417,8 @@
   <p class="roadmap-label">Recorrido de la serie</p>
   <div class="tabs">
     <button type="button" class="tab done" data-target="etapa-01">01 · Crear tablas</button>
-    <button type="button" class="tab active" data-target="etapa-02">02 · Modelo de datos</button>
-    <span class="tab locked" title="Próximamente">03 · Relaciones</span>
+    <button type="button" class="tab done" data-target="etapa-02">02 · Modelo de datos</button>
+    <button type="button" class="tab active" data-target="etapa-03">03 · Relaciones</button>
     <span class="tab locked" title="Próximamente">04 · Medidas DAX</span>
     <span class="tab locked" title="Próximamente">05 · Tablas dinámicas</span>
     <span class="tab locked" title="Próximamente">06 · KPIs</span>
@@ -446,7 +450,7 @@ Importante: la columna Fecha debe cargarse como un valor de fecha real de Excel 
   <article class="prompt-card active-card" id="etapa-02" data-panel="etapa-02">
     <div class="prompt-meta">
       <div class="prompt-title-group">
-        <span>ETAPA 02</span>
+        <span>ETAPA 02 · COMPLETADO ✓</span>
         <h2>Incorporar las tablas al Modelo de Datos de Power Pivot</h2>
       </div>
       <span class="goal-chip">Objetivo: cargar y validar los datos antes de crear relaciones</span>
@@ -466,9 +470,43 @@ Importante: la columna Fecha debe cargarse como un valor de fecha real de Excel 
     </div>
   </article>
 
+  <article class="prompt-card active-card" id="etapa-03" data-panel="etapa-03">
+    <div class="prompt-meta">
+      <div class="prompt-title-group">
+        <span>ETAPA 03</span>
+        <h2>Crear las relaciones entre las tablas</h2>
+      </div>
+      <span class="goal-chip">Objetivo: conectar el modelo con relaciones 1 a muchos</span>
+    </div>
+
+    <div class="prompt-body">
+      <div class="prompt-block">
+        <p class="prompt-text">Ahora crea las relaciones entre las tablas en Power Pivot, explicando por qué cada relación es 1 a muchos y cuál es la tabla "del lado uno" en cada caso. Si no puedes crear las relaciones directamente desde tu interfaz, no modifiques nada del libro: solo indícalo y sugiere las relaciones que corresponden.</p>
+
+        <div class="prompt-footer">
+          <span class="hint">Prompt principal: la IA valida y sugiere las relaciones.</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copiar prompt</button>
+        </div>
+      </div>
+
+      <div class="note-box">
+        <strong>Aclaración:</strong> hasta el momento, la IA no puede crear las relaciones directamente en Power Pivot — esa acción no está disponible desde su interfaz. Las relaciones hay que crearlas "a mano" en la vista de diagrama de Power Pivot. Para eso, usá el siguiente prompt, que le pide a la IA el paso a paso exacto para hacerlo vos mismo.
+      </div>
+
+      <div class="prompt-block">
+        <p class="prompt-text">Indícame paso a paso cómo crear en Power Pivot las relaciones entre tblVentas, tblProductos, tblClientes y tblCalendario, especificando qué campo conecta cada par de tablas, por qué cada relación es 1 a muchos, y cuál es la tabla "del lado uno" en cada caso.</p>
+
+        <div class="prompt-footer">
+          <span class="hint">Prompt de apoyo: la IA te guía para crear las relaciones manualmente.</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copiar prompt</button>
+        </div>
+      </div>
+    </div>
+  </article>
+
   <div class="next-up">
     <span class="dot"></span>
-    <span>Próximo paso: crear las relaciones entre las tablas dentro de Power Pivot. Se publica pronto en esta misma página.</span>
+    <span>Próximo paso: crear las primeras medidas DAX (Ventas Totales, Margen %). Se publica pronto en esta misma página.</span>
   </div>
 </main>
 
@@ -481,7 +519,8 @@ Importante: la columna Fecha debe cargarse como un valor de fecha real de Excel 
 
 <script>
   function copyPrompt(btn){
-    const text = btn.closest('.prompt-card').querySelector('.prompt-text').innerText;
+    const scope = btn.closest('.prompt-block') || btn.closest('.prompt-card');
+    const text = scope.querySelector('.prompt-text').innerText;
     navigator.clipboard.writeText(text).then(() => {
       const original = btn.innerText;
       btn.innerText = "Copiado ✓";
@@ -512,7 +551,7 @@ Importante: la columna Fecha debe cargarse como un valor de fecha real de Excel 
   });
 
   // Al cargar la página se muestra la última etapa disponible
-  showPanel('etapa-02');
+  showPanel('etapa-03');
 </script>
 
 </body>
