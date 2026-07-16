@@ -208,6 +208,14 @@
     margin-left:6px;
     opacity:0.6;
   }
+  .tab.done{
+    color:var(--forest);
+  }
+  .tab.done::after{
+    content:"✓";
+    margin-left:6px;
+    opacity:0.7;
+  }
 
   /* ---------- Prompt card, styled like a formula bar + cell ---------- */
   main{
@@ -368,8 +376,8 @@
 <nav class="roadmap" aria-label="Etapas de la serie">
   <p class="roadmap-label">Recorrido de la serie</p>
   <div class="tabs">
-    <span class="tab active">01 · Crear tablas</span>
-    <span class="tab locked">02 · Modelo de datos</span>
+    <span class="tab done">01 · Crear tablas</span>
+    <span class="tab active">02 · Modelo de datos</span>
     <span class="tab locked">03 · Relaciones</span>
     <span class="tab locked">04 · Medidas DAX</span>
     <span class="tab locked">05 · Tablas dinámicas</span>
@@ -381,14 +389,14 @@
   <article class="prompt-card">
     <div class="prompt-meta">
       <div class="prompt-title-group">
-        <span>ETAPA 01 · PASO 1 DE 2</span>
-        <h2>Crear las tablas base para un modelo relacionable</h2>
+        <span>ETAPA 02 · PASO 1 DE 1</span>
+        <h2>Incorporar las tablas al Modelo de Datos de Power Pivot</h2>
       </div>
-      <span class="goal-chip">Objetivo: estructurar los datos antes de tocar Power Pivot</span>
+      <span class="goal-chip">Objetivo: cargar y validar los datos antes de crear relaciones</span>
     </div>
 
     <div class="prompt-body">
-      <p class="prompt-text">Genera 4 tablas de ejemplo para un análisis de ventas: "Ventas" (con ID_Producto, ID_Cliente, Fecha, Cantidad, Importe), "Productos" (ID_Producto, Nombre, Categoría, Costo), "Clientes" (ID_Cliente, Nombre, Región, Segmento) y "Calendario" (Fecha, Año, Mes, Trimestre). Asegúrate de que los campos clave (ID_Producto, ID_Cliente, Fecha) tengan el mismo nombre y tipo de dato en todas las tablas para que las relaciones se puedan crear sin conflictos. Colócalas en hojas separadas y dales formato de Tabla de Excel.</p>
+      <p class="prompt-text">Toma estas 4 tablas de Excel y agrégalas al Modelo de Datos de Power Pivot. Antes de crear relaciones, revisa que los tipos de datos de los campos clave (ID_Producto, ID_Cliente, Fecha) coincidan entre tablas, y avísame si detectas alguna inconsistencia.</p>
 
       <div class="prompt-footer">
         <span class="hint">Copiá el prompt y pegalo en tu asistente de IA dentro de Excel.</span>
@@ -399,7 +407,7 @@
 
   <div class="next-up">
     <span class="dot"></span>
-    <span>Próximo paso: agregar estas tablas al Modelo de Datos de Power Pivot. Se publica pronto en esta misma página.</span>
+    <span>Próximo paso: crear las relaciones entre las tablas dentro de Power Pivot. Se publica pronto en esta misma página.</span>
   </div>
 </main>
 
