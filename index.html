@@ -195,6 +195,9 @@
     text-decoration:none;
     cursor:pointer;
     display:inline-block;
+    appearance:none;
+    -webkit-appearance:none;
+    line-height:inherit;
   }
   .tab.locked{
     cursor:not-allowed;
@@ -394,8 +397,8 @@
 <nav class="roadmap" aria-label="Etapas de la serie">
   <p class="roadmap-label">Recorrido de la serie</p>
   <div class="tabs">
-    <a class="tab done" href="#etapa-01" data-target="etapa-01">01 · Crear tablas</a>
-    <a class="tab active" href="#etapa-02" data-target="etapa-02">02 · Modelo de datos</a>
+    <button type="button" class="tab done" data-target="etapa-01">01 · Crear tablas</button>
+    <button type="button" class="tab active" data-target="etapa-02">02 · Modelo de datos</button>
     <span class="tab locked" title="Próximamente">03 · Relaciones</span>
     <span class="tab locked" title="Próximamente">04 · Medidas DAX</span>
     <span class="tab locked" title="Próximamente">05 · Tablas dinámicas</span>
@@ -419,7 +422,7 @@
 Importante: la columna Fecha debe cargarse como un valor de fecha real de Excel (formato de fecha, no texto) tanto en "Calendario" como en "Ventas". Evitá guardarla como texto en formato ISO (AAAA-MM-DD), ya que eso impide relacionarla correctamente en Power Pivot.</p>
 
       <div class="prompt-footer">
-        <span class="hint">⚠️ Nota agregada: la IA había generado "Fecha" como texto ISO en vez de fecha real. Esta versión ya lo corrige.</span>
+        <span class="hint">Copiá el prompt y pegalo en tu asistente de IA dentro de Excel.</span>
         <button class="copy-btn" onclick="copyPrompt(this)">Copiar prompt</button>
       </div>
     </div>
@@ -428,7 +431,7 @@ Importante: la columna Fecha debe cargarse como un valor de fecha real de Excel 
   <article class="prompt-card active-card" id="etapa-02" data-panel="etapa-02">
     <div class="prompt-meta">
       <div class="prompt-title-group">
-        <span>ETAPA 02 · PASO 1 DE 1</span>
+        <span>ETAPA 02</span>
         <h2>Incorporar las tablas al Modelo de Datos de Power Pivot</h2>
       </div>
       <span class="goal-chip">Objetivo: cargar y validar los datos antes de crear relaciones</span>
@@ -484,8 +487,7 @@ Importante: la columna Fecha debe cargarse como un valor de fecha real de Excel 
   }
 
   tabs.forEach(tab => {
-    tab.addEventListener('click', (e) => {
-      e.preventDefault();
+    tab.addEventListener('click', () => {
       showPanel(tab.dataset.target);
     });
   });
