@@ -235,7 +235,6 @@
     border-radius:var(--radius);
     box-shadow:var(--shadow);
     overflow:hidden;
-    scroll-margin-top:100px;
   }
   .prompt-card + .prompt-card{
     margin-top:22px;
@@ -342,14 +341,6 @@
     flex-shrink:0;
   }
 
-  .prompt-card.flash{
-    animation: flash-highlight 1s ease;
-  }
-  @keyframes flash-highlight{
-    0%{ box-shadow: 0 0 0 3px rgba(201,147,46,0.5), var(--shadow); }
-    100%{ box-shadow: var(--shadow); }
-  }
-
   footer{
     border-top:1px solid var(--line);
     padding:32px 28px;
@@ -403,8 +394,8 @@
 <nav class="roadmap" aria-label="Etapas de la serie">
   <p class="roadmap-label">Recorrido de la serie</p>
   <div class="tabs">
-    <a class="tab done" href="#etapa-01">01 · Crear tablas</a>
-    <a class="tab active" href="#etapa-02">02 · Modelo de datos</a>
+    <a class="tab done" href="#etapa-01" data-target="etapa-01">01 · Crear tablas</a>
+    <a class="tab active" href="#etapa-02" data-target="etapa-02">02 · Modelo de datos</a>
     <span class="tab locked" title="Próximamente">03 · Relaciones</span>
     <span class="tab locked" title="Próximamente">04 · Medidas DAX</span>
     <span class="tab locked" title="Próximamente">05 · Tablas dinámicas</span>
@@ -413,7 +404,7 @@
 </nav>
 
 <main>
-  <article class="prompt-card completed" id="etapa-01">
+  <article class="prompt-card completed" id="etapa-01" data-panel="etapa-01">
     <div class="prompt-meta">
       <div class="prompt-title-group">
         <span>ETAPA 01 · COMPLETADO ✓</span>
@@ -434,7 +425,7 @@ Importante: la columna Fecha debe cargarse como un valor de fecha real de Excel 
     </div>
   </article>
 
-  <article class="prompt-card active-card" id="etapa-02">
+  <article class="prompt-card active-card" id="etapa-02" data-panel="etapa-02">
     <div class="prompt-meta">
       <div class="prompt-title-group">
         <span>ETAPA 02 · PASO 1 DE 1</span>
@@ -479,6 +470,28 @@ Importante: la columna Fecha debe cargarse como un valor de fecha real de Excel 
       }, 1800);
     });
   }
+
+  const tabs = document.querySelectorAll('.tab[data-target]');
+  const panels = document.querySelectorAll('.prompt-card[data-panel]');
+
+  function showPanel(targetId){
+    panels.forEach(panel => {
+      panel.style.display = (panel.dataset.panel === targetId) ? '' : 'none';
+    });
+    tabs.forEach(t => {
+      t.classList.toggle('active', t.dataset.target === targetId);
+    });
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      e.preventDefault();
+      showPanel(tab.dataset.target);
+    });
+  });
+
+  // Al cargar la página se muestra la última etapa disponible
+  showPanel('etapa-02');
 </script>
 
 </body>
